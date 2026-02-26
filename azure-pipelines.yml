@@ -17,6 +17,6 @@ steps:
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'Azure subscription 1'
+    azureSubscription: 'html-azure-connection'
     appName: 'devops-azure'
     package: '$(Build.ArtifactStagingDirectory)/site.zip'
