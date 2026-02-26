@@ -1,0 +1,22 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)'
+    includeRootFolder: false
+    archiveType: zip
+    archiveFile: '$(Build.ArtifactStagingDirectory)/site.zip'
+    replaceExistingArchive: true
+
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1'
+    appName: 'devops-azure'
+    package: '$(Build.ArtifactStagingDirectory)/site.zip'
